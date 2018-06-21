@@ -128,10 +128,12 @@ def check_keys_installed():
 
 
 def main(args=None):
+    from datetime import datetime
     parser = argparse.ArgumentParser()
     parser.add_argument('origin', metavar='from', help="Varifrån ska du resa?")
     parser.add_argument('to', help="Vart ska du?")
-    parser.add_argument('at', help="När ska du bege dig?")
+    parser.add_argument('at', help="När ska du bege dig?", nargs='?',
+                        default=datetime.now().strftime('%H:%M'))
     parser.add_argument('--verbose', '-v', action='store_true',
                         help="Skriv ut debuggutskrifter")
     check_keys_installed()
